@@ -1,0 +1,51 @@
+.movie-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    color: #fff;
+    background-color: #111;
+    min-height: 100vh;
+  }
+  
+  .movie-poster {
+    max-width: 300px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    margin-bottom: 2rem;
+  }
+  
+  .movie-info {
+    max-width: 700px;
+    text-align: left;
+    background-color: #222;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  }
+  
+  .movie-info h2 {
+    margin-bottom: 1rem;
+    color: #f5c518;
+  }
+  
+  .movie-info p {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+  
+  .back-btn {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.6rem 1.2rem;
+    background-color: #f5c518;
+    color: #000;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.3s;
+  }
+  
+  .back-btn:hover {
+    background-color: #e2b007;
+  }
+  
