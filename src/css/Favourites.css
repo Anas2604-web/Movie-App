@@ -50,3 +50,18 @@
     animation: fadeIn 0.3s ease-out forwards;
   }
   
+
+  .movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.5rem;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1rem;
+  }
+  
+  
+  
+  
+  

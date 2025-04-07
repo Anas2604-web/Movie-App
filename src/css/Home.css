@@ -63,14 +63,25 @@
   }
   
   
-  .movies-grid {
+  /* .movies-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
     padding: 1rem;
     width: 100%;
     box-sizing: border-box;
+  } */
+
+  .movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+    justify-items: center; /* This centers each movie-card in its cell */
+    box-sizing: border-box;
+    width: 100%;
   }
+  
 
   .no-movies-found {
     text-align: center;
