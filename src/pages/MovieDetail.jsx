@@ -2,8 +2,12 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import '../css/MovieDetail.css';
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+
 function MovieDetail() {
   const { imdbID } = useParams();
+  const navigate = useNavigate();
+
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
@@ -19,6 +23,10 @@ function MovieDetail() {
 
     return (
     <div className="movie-details">
+      <button onClick={() => navigate(-1)} className="back-button">
+  ← Back
+</button>
+
       <img className="movie-poster" src={movie.Poster} alt={movie.Title} />
       <div className="movie-info">
         <h2>{movie.Title}</h2>

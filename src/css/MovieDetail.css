@@ -49,3 +49,21 @@
     background-color: #e2b007;
   }
   
+
+  .back-button {
+    background: none;
+    border: none;
+    color:  rgba(0, 64, 255, 0.762);
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-bottom: 1.3rem;
+    margin-left: 30px;
+    padding-left: 1rem;
+    font-weight: bold;
+    transition: color 0.2s;
+  }
+  
+  .back-button:hover {
+    color: rgba(0, 64, 255, 0.762)
+  }
+  

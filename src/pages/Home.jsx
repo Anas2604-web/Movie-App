@@ -5,13 +5,16 @@ import { useEffect } from "react";
 import { searchMovies, getPopularMovies } from "../services/api";
 
 
+
 function Home() {
   const [searchQuery, setSearchQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  
+  const [isSearchMode, setIsSearchMode] = useState(false);
+
+
 
   useEffect(() => {
     const loadPopularMovies = async () => {
@@ -29,26 +32,81 @@ function Home() {
     loadPopularMovies();
   }, []);
 
+  // const handleSearch = async (e) => {
+  //   e.preventDefault();
+  //   if (!searchQuery.trim()) return
+  //   if (loading) return
+
+  //   setLoading(true)
+  //   try {
+  //       const searchResults = await searchMovies(searchQuery)
+  //       setMovies(searchResults)
+  //       setError(null)
+  //   } catch (err) {
+  //       console.log(err)
+  //       setError("Failed to search movies...")
+  //   } finally {
+  //       setLoading(false)
+  //   }
+  // };
   const handleSearch = async (e) => {
     e.preventDefault();
-    if (!searchQuery.trim()) return
-    if (loading) return
-
-    setLoading(true)
+    if (!searchQuery.trim()) return;
+    if (loading) return;
+  
+    setLoading(true);
+    setIsSearchMode(true); // 👈 Set to true when searching
+  
     try {
-        const searchResults = await searchMovies(searchQuery)
-        setMovies(searchResults)
-        setError(null)
+      const searchResults = await searchMovies(searchQuery);
+      setMovies(searchResults);
+      setError(null);
     } catch (err) {
-        console.log(err)
-        setError("Failed to search movies...")
+      console.log(err);
+      setError("Failed to search movies...");
     } finally {
-        setLoading(false)
+      setLoading(false);
     }
   };
+  
+  const handleBack = async () => {
+    setSearchQuery("");
+    setIsSearchMode(false);
+    setError(null);
+    setLoading(true);
+  
+    try {
+      const defaultMovies = await fetchMovies();
+      setMovies(defaultMovies);
+    } catch (err) {
+      console.log(err);
+      setError("Failed to fetch movies...");
+    } finally {
+      setLoading(false);
+    }
+  };
+  const fetchMovies = async () => {
+    try {
+      const popularMovies = await getPopularMovies();
+      return popularMovies;
+    } catch (err) {
+      console.log(err);
+      throw new Error("Failed to load movies...");
+    }
+  }
+
+  
+
+
 
   return (
     <div className="home">
+      {isSearchMode && (
+        
+      <button onClick={handleBack} className="back-arrow-btn">
+        ← Back
+      </button>
+    )}
       <form onSubmit={handleSearch} className="search-form">
         <input
           type="text"
